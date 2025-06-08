@@ -789,14 +789,14 @@ diff = (maxi-mini);
 if diff==0
     diff = 1;
 end
-range = [mini maxi]+[-1 1]*diff/10;
+range = [mini maxi] + [-1 1]*diff/10;
 fitvar = linspace(range(1),range(2));
 if scale(1:3) == 'log'
-    if range(1)<0
+    if range(1)<0F
         range = [mini/1.5 maxi*1.5];
-        fitvar = logspace(floor(log10(mini)),log10(range(2)),100);
+        fitvar = logspace(floor(log10(mini)), log10(range(2)), 100);
     else
-        fitvar = logspace(log10(range(1)),log10(range(2)),100);
+        fitvar = logspace(log10(range(1)), log10(range(2)), 100);
     end
 end
 
@@ -1207,7 +1207,7 @@ data = handles.Calibration_Measurements.Data;
 if isempty(data)
     return
 end
-handles.Calibration_Measurements.Data = rmoutliers(data,'movmean',20);
+handles.Calibration_Measurements.Data = rmoutliers(data, 'movmean', 20);
 UpdatePlot(hObject,eventdata,handles);
 saved(2) = 0;
 end
@@ -1222,7 +1222,7 @@ end
 static = full(:,6:end);
 data = full(:,1:5);
 data = smoothdata(data);
-handles.Calibration_Measurements.Data = [data,static];
+handles.Calibration_Measurements.Data = [data, static];
 UpdatePlot(hObject,eventdata,handles)
 saved(2) = 0;
 end
